@@ -6,3 +6,13 @@ from .models import Todo as TodoModel
 from .database_config import get_db
 
 
+
+class Todo(SQLAlchemyObjectType):
+    class Meta:
+        model = TodoModel
+        interfaces = (ObjectType,)
+
+
+
+
+
