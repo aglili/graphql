@@ -14,5 +14,17 @@ class Todo(SQLAlchemyObjectType):
 
 
 
+class Query(ObjectType):
+    todo = Field(Todo,id=ID())
+    todos = Field(List(Todo))
 
+    def resolve_todo(self,info,id):
+        db = get_db()
+        return db.query(TodoModel).filter(TodoModel.id == id).first()
+
+    def resolve_todos(self,info):
+        db = get_db()
+        return db.query(TodoModel).all()
+    
+    
 
