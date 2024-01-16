@@ -19,4 +19,7 @@ app.add_middleware(
 )
 
 
+app.add_api_route("/graphql", GraphQLApp(schema=Query,mutations=[CreateTodo,DeleteTodo,UpdateTodo]))
+
+
 
